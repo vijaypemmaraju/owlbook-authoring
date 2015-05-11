@@ -1,0 +1,21 @@
+# See https://atom.io/docs/latest/hacking-atom-package-word-count#menus for more details
+'context-menu':
+  'atom-text-editor':  [
+      {
+        'label': 'Insert Question Tag'
+        'command': 'owlbook-authoring:insertQuestionTag'
+      }
+    ]
+'menu':[
+    {'label': 'File'
+    'submenu': [
+        {  'label':'Generate Textbook', 'command' :'owlbook-authoring:generateTextbook'}
+      ]
+    },
+    {'label': 'OWL'
+    'submenu': [
+        {  'label':'Question', 'command' :'owlbook-authoring:insertQuestionTag'},
+        {  'label':'Code Fragment', 'command' :'owlbook-authoring:insertCodeFragment'}
+      ]
+    }
+]

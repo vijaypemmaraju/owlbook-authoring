@@ -1,0 +1,22 @@
+{
+  "name": "owlbook-authoring",
+  "main": "./lib/owlbook-authoring",
+  "version": "0.0.0",
+  "description": "A short description of your package",
+  "activationCommands": {
+    "atom-workspace": "owlbook-authoring:generateTextbook",
+    "atom-workspace": "owlbook-authoring:insertQuestionTag",
+    "atom-workspace": "owlbook-authoring:insertCodeFragment"
+  },
+  "repository": "https://github.com/vijaypemmaraju/owlbook-authoring",
+  "license": "MIT",
+  "engines": {
+    "atom": ">=0.174.0 <2.0.0"
+  },
+  "dependencies": {
+    "space-pen": "*",
+    "atom-space-pen-views" : "*",
+    "underscore-plus" : "*",
+    "fs-plus" : "*"
+  }
+}
