@@ -4,9 +4,7 @@
   "version": "0.0.0",
   "description": "A short description of your package",
   "activationCommands": {
-    "atom-workspace": "owlbook-authoring:generateTextbook",
-    "atom-workspace": "owlbook-authoring:insertQuestionTag",
-    "atom-workspace": "owlbook-authoring:insertCodeFragment"
+    "atom-workspace": ["owlbook-authoring:generateTextbook","owlbook-authoring:insertQuestionTag", "owlbook-authoring:insertCodeFragment"]
   },
   "repository": "https://github.com/vijaypemmaraju/owlbook-authoring",
   "license": "MIT",
