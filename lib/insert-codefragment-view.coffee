@@ -6,9 +6,10 @@ fs = require 'fs-plus'
 
 module.exports =
 class InsertCodeFragmentView extends View
+  # reference to whatever we were looking at before so we can refocus it when we close the view
   previouslyFocusedElement: null
-  mode: null
 
+  # the contents of the view itself, represented as HTML
   @content: ->
     @div class: 'package-generator', =>
       @div class: 'codeFragmentLabel', outlet: 'codeFragmentLabel'
@@ -27,6 +28,7 @@ class InsertCodeFragmentView extends View
     @panel?.destroy()
     @commandSubscription.dispose()
 
+  # adds the view as a modal panel to the workspace
   attach: () ->
     @panel ?= atom.workspace.addModalPanel(item: this, visible: false)
     @previouslyFocusedElement = $(document.activeElement)
@@ -39,9 +41,10 @@ class InsertCodeFragmentView extends View
     @panel?.hide()
     @previouslyFocusedElement?.focus()
 
+
+  # gets the input from the editor, performs the appropriate actions on it, and closes the view.
   confirm: ->
     hasLineNumbers = @codeFragmentEditor.getText()
     if (atom.workspace.activePaneItem)
       atom.workspace.activePaneItem.insertText('<!-- owltag.codefragment linenumber="'+hasLineNumbers+'" -->\n<!-- owltag.endcodefragment -->')
-      #atom.workspace.activePaneItem.insertText('')
     @close()

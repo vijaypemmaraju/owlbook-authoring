@@ -8,7 +8,7 @@ module.exports = OwlbookAuthoring =
   activate: (state) ->
     # Events subscribed to in atom's system can be easily cleaned up with a CompositeDisposable
     @subscriptions = new CompositeDisposable
-    # Register command that toggles this view
+    # Register commands for our views
     @subscriptions.add atom.commands.add 'atom-workspace', 'owlbook-authoring:insertQuestionTag': => @insertQuestionTag()
     @subscriptions.add atom.commands.add 'atom-workspace', 'owlbook-authoring:insertCodeFragment': => @insertCodeFragment()
     @subscriptions.add atom.commands.add 'atom-workspace', "owlbook-authoring:generateTextbook", => @generateTextbook()
@@ -16,7 +16,6 @@ module.exports = OwlbookAuthoring =
 
   deactivate: ->
     @subscriptions.dispose()
-    @owlbookAuthoringView.destroy()
 
   insertQuestionTag: ->
     new InsertQuestionTagView()
@@ -29,6 +28,7 @@ module.exports = OwlbookAuthoring =
       atom.pickFolder(@onFolderPick)
     catch error
 
+  # generates the directory structure for an OWL Textbook. 
   onFolderPick: (paths) ->
 
       if paths != null
